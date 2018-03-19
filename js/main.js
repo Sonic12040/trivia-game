@@ -1,5 +1,6 @@
 //VARIABLES
 let isStarted = false;
+let isFinished = false;
 let score = 0;
 let triviaQuestions = [
     {
@@ -61,6 +62,7 @@ function init() {
     $(`.js-startsubmit`).text(`Start`);
     $(`#results`).empty();
     isStarted = false;
+    isFinished = false;
     score = 0;
 }
 function startGame() {
@@ -94,9 +96,11 @@ function stopGame() {
 }
 
 function tabulatedGame() {
+    isFinished = true;
     $(`#questions`).empty();
     $(`#answers`).empty();
-    $(`#results`).text(`Your score was ` + score + ` out of 10.`)
+    $(`#results`).text(`Your score was ` + score + ` out of ` + triviaQuestions.length)
+    $(`.js-startsubmit`).text(`Reset`);
 }
 
 
@@ -106,17 +110,12 @@ function tabulatedGame() {
     $(`.js-startsubmit`).on(`click`, function() {
         if(isStarted === false) {
             startGame();
-        }
-    $(`.js-startsubmit`).on(`click`, function() {
-        if(isStarted === true) {
+        } else if (isStarted === true & isFinished === false) {
             stopGame();
-            tabulatedGame();
-            resetGame();
-        }
-    })
-    $(`.js-reset`).on(`click`, function() {
+            tabulatedGame();    
+        } else {
             init();
-    })
+        }
 
     })
     //PAGE LOAD

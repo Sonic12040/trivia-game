@@ -2,6 +2,8 @@
 let isStarted = false;
 let isFinished = false;
 let score = 0;
+let triviaTimer = 10;
+let timerInterval;
 let triviaQuestions = [
     {
         "question": "At what time does Romani, the ranch girl, wake up?",
@@ -64,7 +66,9 @@ function init() {
     isStarted = false;
     isFinished = false;
     score = 0;
+    triviaTimer = 10;
 }
+
 function startGame() {
     isStarted = true;
     //start Timer
@@ -87,10 +91,6 @@ function stopGame() {
         let userAnswers = $(this).val();
             if(userAnswers === triviaQuestions[$(this).attr(`name`)].correctAnswer) {
                 score++;
-                console.log(`score`);
-            }
-            else {
-                console.log(`Heeheehee...`)
             }
     })
 }
@@ -99,17 +99,31 @@ function tabulatedGame() {
     isFinished = true;
     $(`#questions`).empty();
     $(`#answers`).empty();
+    $(`#timer`).empty();
     $(`#results`).text(`Your score was ` + score + ` out of ` + triviaQuestions.length)
     $(`.js-startsubmit`).text(`Reset`);
 }
 
-
+function timer() {
+    $(`#timer`).text(`Time remaining: ` + triviaTimer);
+    timerInterval = setInterval(timerCount, 1000);
+}
+function timerCount() {
+    triviaTimer--;
+    $(`#timer`).text(`Time remaining: ` + triviaTimer);
+    if (triviaTimer === 0) {
+        clearInterval(timerInterval);
+        stopGame();
+        tabulatedGame();
+    }
+}
 
 //EVENTS
     init();
     $(`.js-startsubmit`).on(`click`, function() {
         if(isStarted === false) {
             startGame();
+            timer();
         } else if (isStarted === true & isFinished === false) {
             stopGame();
             tabulatedGame();    

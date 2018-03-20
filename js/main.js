@@ -2,7 +2,7 @@
 let isStarted = false;
 let isFinished = false;
 let score = 0;
-let triviaTimer = 10;
+let triviaTimer = 100;
 let timerInterval;
 let triviaQuestions = [
     {
@@ -66,7 +66,7 @@ function init() {
     isStarted = false;
     isFinished = false;
     score = 0;
-    triviaTimer = 10;
+    triviaTimer = 100;
 }
 
 function startGame() {
@@ -86,6 +86,7 @@ function startGame() {
 }
 
 function stopGame() {
+    clearInterval(timerInterval);
     //Score is tabulated
     $(`input:checked`).each(function() {
         let userAnswers = $(this).val();
@@ -112,7 +113,6 @@ function timerCount() {
     triviaTimer--;
     $(`#timer`).text(`Time remaining: ` + triviaTimer);
     if (triviaTimer === 0) {
-        clearInterval(timerInterval);
         stopGame();
         tabulatedGame();
     }

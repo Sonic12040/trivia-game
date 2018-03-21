@@ -99,7 +99,6 @@ function stopGame() {
 function tabulatedGame() {
     isFinished = true;
     $(`#questions`).empty();
-    $(`#answers`).empty();
     $(`#timer`).empty();
     $(`#results`).text(`Your score was ` + score + ` out of ` + triviaQuestions.length)
     $(`.js-startsubmit`).text(`Reset`);

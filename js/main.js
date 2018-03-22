@@ -74,7 +74,7 @@ function startGame() {
     //start Timer
     //populate questions Div
     for (let i = 0; i < triviaQuestions.length; i++) {
-        $(`#questions`).append(`<p>` + triviaQuestions[i].question + `</p>`);
+        $(`#questions`).append(`<p class="padt-1p">` + triviaQuestions[i].question + `</p>`);
         for (let j = 0; j < triviaQuestions[i].answers.length; j++) {
             $(`#questions`).append(`<input type="radio" value="` + triviaQuestions[i].answers[j] + `" name="` + i +`">` + triviaQuestions[i].answers[j] + `</input>`);
         }

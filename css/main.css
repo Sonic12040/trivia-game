@@ -1,0 +1,55 @@
+.bdc-ffdab9 {
+    border-color: #ffdab9;
+}
+
+.bdrad-50p {
+    border-radius: 50%;
+}
+
+.bds-s {
+    border-style: solid;
+}
+
+.bgc-556b2f {
+    background-color: #556b2f;
+}
+
+.bgc-335b1e {
+    background-color: #335b1e;
+}
+
+.bgrimg-br {
+    background:
+        url("./../images/background-logo.svg");
+        background-position: bottom right;
+        background-repeat: no-repeat;
+        background-color:#556b2f;
+}
+
+.c-ffdab9 {
+    color: #ffdab9;
+}
+
+.fs-150p {
+    font-size: 150%;
+}
+
+.fs-200p {
+    font-size: 200%;
+}
+
+.fs-300p {
+    font-size: 300%;
+}
+
+.h-100p {
+    height: 100%;
+}
+
+.padt-1p {
+    padding-top: 1%
+}
+
+.ta-c {
+    text-align: center;
+}
